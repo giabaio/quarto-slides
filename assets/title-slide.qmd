@@ -1,0 +1,42 @@
+:::: {.title-slide}
+::: {.title}
+{{< meta params.title >}}
+:::
+
+::: {.author}
+{{< meta params.author >}}
+:::
+
+::: {.institute}
+{{< meta params.institute >}}
+:::
+
+::: {.social}
+<i class="fa-solid fa-envelope" style="color:#00acee"></i> <a href="mailto:g.baio@ucl.ac.uk">g.baio@ucl.ac.uk</a>    
+<i class="fa-brands fa-firefox" style="color:#EA7600"></i> <a href="https://gianluca.statistica.it">https://gianluca.statistica.it</a>     
+<i class="fa-brands fa-firefox" style="color:#EA7600"></i> <a href="https://egon.stats.ucl.ac.uk/research/statistics-health-economics">https://egon.stats.ucl.ac.uk/research/statistics-health-economics</a>     
+<i class="fa-brands fa-github" style="color:black"></i> <a href="https://github.com/giabaio">https://github.com/giabaio</a>     
+<i class="fa-brands fa-github" style="color:black"></i> <a href="https://github.com/StatisticsHealthEconomics">https://github.com/StatisticsHealthEconomics</a>    
+<i class="fa-brands fa-twitter" style="color:#00acee"></i> <a href="https://twitter.com/gianlubaio">@gianlubaio</a>
+:::
+
+::: {.conference}
+{{< meta params.conference >}}, {{< meta params.location >}}
+:::
+
+::: {.date}
+`r date`
+:::
+
+`r postit(text=paste0('Check out our departmental podcast "Random Talks" on Soundcloud!', add_podcast()), top="75%",left="2.5%",height="6.3em",width="6.3em",rotate="-8deg")`
+
+
+`r postit(text=paste0("Follow our departmental social media accounts", add_twitter(url="https://twitter.com/stats_ucl",title="@stats_UCL",fill="#00acee"), add_linkedin(url="https://www.linkedin.com/in/statistical-science-ucl-906b9a201",title="LinkedIn"), add_instagram(url="https://www.instagram.com/ucl.stats/",title="Instagram")),top="53%",left="6.5%",height="6.2em",width="6.2em")`
+
+`r logo_stats()`
+
+::: footer
+
+:::
+
+::::

@@ -1,0 +1,24 @@
+<style>
+.logo {
+  background-image: url("UCL-stats.png");
+  background-size: 14% 7%;
+  background-repeat: no-repeat;
+  position: absolute;
+  top:  1.7%; /* 2.65%em */
+  left: 86%;
+  height: 100%;
+  width: 100%;
+  z-index: 1000; !default
+}
+</style>
+
+<script>
+document
+  .querySelectorAll(
+    '.slides'
+  )
+  .forEach(el => {
+    el.innerHTML += '<div class="logo"></div>';
+  });
+</script>
+
