@@ -1,0 +1,129 @@
+---
+#################################################################################################################################################
+# Information about the presentation --- change this block to specify data for the presentation
+params:
+   title: "Some very long title here, with lots of sassy details..."
+   shorttitle: "A *much* shorter title"
+   author: Gianluca Baio
+   affiliation: UCL
+   date: 27 November 2022
+   institute: "[Department of Statistical Science](https://www.ucl.ac.uk/statistics/) | University College London"
+   conference: "The name of the conference/seminar"
+   location: "The place where it's held (Country)"
+   shortlocation: "Place, City"
+#################################################################################################################################################
+#
+#
+# Creates a short format for the date (to include in the footer)
+shortdate: '`r format(as.Date((if(!is.null(params$date)){params$date} else {format(Sys.Date(),"%e %B %Y")}),format="%e %b %Y"),"%e %b %Y")`'
+shortdate-link: '`r paste0("<a href=\"https://en.wikipedia.org/wiki/",format(format(as.Date((if(!is.null(params$date)){params$date} else {format(Sys.Date(),"%e %B %Y")}),format="%e %b %Y"),"%B_%d")),"\" title=\"On this day...\" target=\"_blank\">",format(format(as.Date((if(!is.null(params$date)){params$date} else {format(Sys.Date(),"%e %B %Y")}),format="%e %b %Y"),"%e %b %Y")),"</a>")`'
+#
+# Creates the basic social buttons to include in the footer
+social: |
+   <a href="https://twitter.com/giabaio" title="Follow me on Twitter"><i class="fa-brands fa-twitter" style="color:black"></i></a>&nbsp;
+   &nbsp;<a href="https://github.com/giabaio" title="Check out my repos"><i class="fa-brands fa-github" style="color:black"></i></a>&nbsp;
+   &nbsp; <a href="mailto:g.baio@ucl.ac.uk" title="Email me"><i class="fa-solid fa-envelope" style="color:black"></i></a>&nbsp;
+   &nbsp; <a href="https://gianluca.statistica.it" title="Visit my website"><i class="fa-brands fa-firefox" style="color:black"></i></a>
+#
+# Ensures that the name of the resulting html file is the same as the presentation title
+pagetitle: "{{< meta params.title >}}"
+#
+# Specifies the format and all revealjs options
+format:
+   revealjs:
+# Allows fontawesome and academicons
+     header-includes: |
+      <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" rel="stylesheet"/>
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+#
+# Specifies the theme
+     theme: ["assets/css/ucl-stats.scss"]
+     slide-number: true
+     chalkboard:
+      buttons: false
+      theme: whiteboard
+     preview-links: auto
+     width: 1800
+     height: 1000
+#
+# Creates a footer by glueing together various bits of text & icons
+     footer: |
+        &copy; {{< meta params.author >}} ({{< meta params.affiliation >}}) &nbsp; | &nbsp;
+        {{< meta social >}} &nbsp; | &nbsp;
+        {{< meta params.shorttitle >}} &nbsp; | &nbsp;
+        {{< meta params.shortlocation >}} &nbsp; | &nbsp; {{< meta shortdate-link >}}
+#
+# Includes various LaTeX macros
+     include-in-header: "assets/macros/latex_macros.html"
+#
+# Adds extra css styles
+     css: "assets/css/styles.css"
+#
+# Allow for emojis
+from: markdown+emoji
+#
+# Adds logo on selected slides (*not* title slide or those with `nobar` class)
+include-after: |
+    <style>
+    .logo {
+      background-image: url("assets/images/UCL-stats.png");
+      background-size: 14% 7%;
+      background-repeat: no-repeat;
+      position: absolute;
+      top:  1.9%; /* 2.65%em */
+      left: 86%;
+      height: 100%;
+      width: 100%;
+      z-index: 20; !default
+    }
+    </style>
+
+    <script>
+    document.querySelectorAll(
+      'section.slide.level2:not(section.slide.level2.title-slide.center):not(section.slide.level2.nobar)'
+    )
+    .forEach(el => {
+      el.innerHTML += '<div class="logo"></div>';
+    });
+    </script>
+---
+
+
+```{r include=FALSE}
+source("assets/setup.R")
+```
+
+```{r child="assets/title-slide.qmd"}
+```
+
+## Here's my first slide
+
+With some text
+
+- And bullet points
+- (A few of them...)
+
+## Here's my second slide
+
+1. This time with numbered lists
+2. And a few items
+
+
+## Or panelsets {.scrollable}
+
+:::: {.panel-tabset}
+
+### Plot
+
+```{r}
+library(ggplot2)
+ggplot(mtcars, aes(hp, mpg, color = am)) +
+  geom_point() +  geom_smooth(formula = y ~ x, method = "loess")
+```
+
+### Data
+
+```{r}
+knitr::kable(mtcars)
+```
+::::
